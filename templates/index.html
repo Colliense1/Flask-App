@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Home Page</h1>
+<p>Welcome To Home page</p>
+
+<table>
+    <a href="{{ url_for('contact') }}" style="font-size: 30px; 
+    font-weight: 600;">Create New Contact</a>
+    <h2>Contacts:</h2>
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Message</th>
+        <th>Action</th>
+    </tr>
+
+    {% for contact in contacts %}
+    <tr>
+        <td>{{ contact.name }}</td>
+        <td>{{ contact.email }}</td>
+        <td>{{ contact.message }}</td>
+        <td>
+            <a href="{{ url_for('update_contact', contact_id=contact.id) }}">Update</a>
+            <a href="{{ url_for('delete_contact', contact_id=contact.id) }}">Delete</a>
+        </td>
+
+
+    </tr>
+
+    {% endfor %}
+</table>
+
+{% endblock %}

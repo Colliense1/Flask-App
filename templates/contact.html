@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ header }}</h1>
+<p>{{ greet }}</p>
+
+<form method="post">
+
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" value="{{ contacts.name if header == 'Update Contact' else '' }}" required>
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" value="{{ contacts.email if header == 'Update Contact' else '' }}"
+        required>
+
+    <label for="email">Message:</label>
+    <textarea name="message" id="message"
+        required>{{ contacts.message if header == 'Update Contact' else '' }}</textarea>
+
+    <input type="submit" value="Submit">
+    <a href="{{ url_for('index') }}">Cancel</a>
+
+</form>
+
+{% endblock %}
